@@ -1,0 +1,29 @@
+<h3 class="mt-5">GESTION DE TICKET</h3> 
+<form>
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="ticket.precioTicket"> 
+    </div>       
+                                
+    <div class="mb-3">
+        <label class="form-check-label" for="tipoEspectador">Tipo de Espectador: </label>
+        <select class="form-control" [(ngModel)]="ticket.categoriaEspectador" name="tipoEspectador" id="tipoEspectador">
+            <option value="l">Local</option>
+            <option value="e">Extranjero</option>
+        </select>      
+    </div>
+
+    <div class="mb-3">
+      <label for="fecha" class="form-label">Fecha</label>
+      <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra">
+    </div>
+    <div class="mb-3">
+      <label for="espectador" class="form-label">Espectador</label>
+      <select name="espectador" id="espectador" [(ngModel)]="ticket.espectador._id" class="form-select" required>
+        <option *ngFor="let e of listaEspectadores" [ngValue]="e._id">{{ e.nombre }} {{ e.apellido }}</option>
+      </select>
+    </div>
+    
+    <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="agregarTicket()">Agregar</button>
+    <button *ngIf="accion=='update'" type="submit" class="btn btn-success" (click)="actualizarTicket()">Actualizar</button>
+  </form>

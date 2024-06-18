@@ -1,0 +1,57 @@
+<div class="col-md-4 d-sm-none d-md-block	d-none d-sm-block">
+    <div class="bg-primary text-white" id="conversor">
+      <h4>Conversor de Divisas</h4>
+    </div>
+
+    <form action="" class="bg-primary">
+      <br>
+      <div class="container">
+        <div>
+          <label for="email" class="form-label text-white">Email Cliente</label>
+          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="transaccion.emailCliente" placeholder="Email del Cliente">
+        </div>
+        <div>
+          <label for="cantidad" class="form-label text-white">Cantidad</label>
+          <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="transaccion.cantidadOrigen" placeholder="Cantidad">
+        </div>
+<!--dejo la variable pero solo es un dato mas (descomentar en la parte de component para usar)-->
+        <div>
+          <label for="tasaConversion" class="form-label text-white">Tasa de Conversión</label>
+          <input type="number" step="0.0001" class="form-control" id="tasaConversion" name="tasaConversion" [(ngModel)]="transaccion.tasaConversion" placeholder="Tasa de Conversión">
+        </div>
+        
+        <div>
+          <label for="monedaOrigen" class="form-label text-white">De</label>
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="transaccion.monedaOrigen" id="monedaOrigen" name="monedaOrigen">
+            <option selected>Elegir</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="ARS">ARS</option>
+          </select>
+        </div>
+        <br>
+
+        <div class="md-3">
+          <label for="monedaDestino" class="form-label text-white">A</label>
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="transaccion.monedaDestino" id="monedaDestino" name="monedaDestino">
+            <option selected>Elegir</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="ARS">ARS</option>
+          </select>
+        </div>
+        <br>
+
+        <div class="form-floating">
+          <textarea class="form-control" id="convertido" name="convertido">{{transaccion.cantidadDestino | currency}}</textarea>
+          <label for="convertido"></label>
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+          <button class="btn btn-warning" type="button" (click)="convertir()">Convertir</button>
+          <!--<button class="btn btn-warning" type="button" (click)="agregarTransaccion()">guardar</button>-->
+        </div>
+      </div>
+      <br>
+    </form>
+  </div>

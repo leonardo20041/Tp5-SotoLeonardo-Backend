@@ -1,0 +1,23 @@
+<h3 class="mt-5">LISTADO DE PRODUCTOS</h3>
+<button type="button" class="btn btn-primary" (click)="agregarProducto()">Agregar</button>
+<button type="button" class="btn btn-info" (click)="elegir(true)">Obtener Destacados</button>
+<button type="button" class="btn btn-success" (click)="elegir(false)">Obtener Todos</button>
+
+<div class="row">
+    <div class="col-4" *ngFor="let p of listaProductos">
+<br>
+    <div class="card" style="width: 18rem;">
+        <img [src]="p.imagen" height="auto" width="90px" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ p.nombre }}</h5>
+            <p class="card-text">Descripción: {{ p.descripcion }}</p>
+            <p class="card-text">Precio: {{ p.precio | currency }}</p>
+            <p class="card-text">Stock: {{ p.stock }} disponible</p>
+            <p class="card-text">Destacado: {{ p.destacado }}</p>
+            <!--<button type="button" class="btn btn-danger" (click)="eliminarExpediente(e._id)">Eliminar</button>
+            <button type="button" class="btn btn-warning" (click)="modificarExpediente(e._id)">Modificar</button>-->
+        </div>
+    </div>
+
+    </div>
+</div>

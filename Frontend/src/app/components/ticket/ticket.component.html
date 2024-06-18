@@ -1,0 +1,35 @@
+<h3 class="mt-5">LISTADO DE TICKETS</h3>
+<button type="button" class="btn btn-primary" (click)="agregarTicket()">Agregar</button>
+<button type="button" class="btn btn-success" (click)="obtenerTickets()">Recuperar Todos</button>
+
+<div class="mt-4">
+    <label for="categoria">Categoria:</label>
+    <select name="categoria" id="categoria" [(ngModel)]="categoria" class="form-select">
+      <option value="l">Local</option>
+      <option value="e">Extranjero</option>
+    </select>
+  
+    <button type="button" class="btn btn-info mt-2" (click)="obtenerTicketsByCategoria()">Recuperar por Filtro</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Precio</th>
+        <th scope="col">Categoría Espectador</th>
+        <th scope="col">Fecha de Compra</th>
+        <th scope="col">Espectador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of listaTickets">
+        <th>{{ t.precioTicket }}</th>
+        <td>{{ t.categoriaEspectador }}</td>
+        <td>{{ t.fechaCompra }}</td>
+        <td>{{ t.espectador.nombre}} {{ t.espectador.apellido }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="eliminarTicket(t._id)">Eliminar</button>
+          <button type="button" class="btn btn-warning" (click)="modificarTicket(t._id)">Modificar</button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>

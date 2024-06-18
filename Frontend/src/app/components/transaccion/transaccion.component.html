@@ -1,0 +1,44 @@
+<h3 class="mt-5">LISTADO DE TRANSACCIONES</h3>
+<button type="button" class="btn btn-primary" (click)="agregarTransaccion()">Agregar</button>
+<button type="button" class="btn btn-success" (click)="obtenerTransacciones()">Recuperar Todos</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Moneda Origen</th>
+      <th scope="col">Cantidad Ingresada</th>
+      <th scope="col">Moneda Destino</th>
+      <th scope="col">Tasa Conversion</th>
+      <th scope="col">Conversion Final</th>
+      <th scope="col">Email de Cliente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of listaTransacciones"> 
+      <th>{{ t.monedaOrigen }}</th>
+      <td>{{ t.cantidadOrigen | currency }}</td>
+      <td>{{ t.monedaDestino }}</td>
+      <td>{{ t.tasaConversion }}</td>
+      <td>{{ t.cantidadDestino | currency}}</td>
+      <td>{{ t.emailCliente}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mt-4">
+  <label for="monedaOrigen">Moneda Origen:</label>
+  <select name="monedaOrigen" id="monedaOrigen" [(ngModel)]="monedaOrigen" class="form-select">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="ARS">ARS</option>
+  </select>
+<br>
+  <label for="monedaOrigen">Moneda Destino:</label>
+  <select name="monedaDestino" id="monedaDestino" [(ngModel)]="monedaDestino" class="form-select">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="ARS">ARS</option>
+  </select>
+
+  <button type="button" class="btn btn-info mt-2" (click)="obtenerTransaccionesByDivisa()">Recuperar por Filtro</button>
+</div>
